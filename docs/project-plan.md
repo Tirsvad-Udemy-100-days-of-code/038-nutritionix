@@ -11,7 +11,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | [b64ad78] |
 
 ---
 
@@ -93,3 +93,4 @@ A No-Go on a gateway moves every later date by the time of the rework; the end d
 [MIL-002]: ./milestones/mil-002-nutritionix-exercises.md
 [MIL-003]: ./milestones/mil-003-sheety-log.md
 [MIL-004]: ./milestones/mil-004-docs-and-wiki.md
+[b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474

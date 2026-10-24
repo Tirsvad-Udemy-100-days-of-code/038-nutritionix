@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | [b64ad78] |
 
 ---
 
@@ -58,3 +58,4 @@ updated whenever an artifact instance is created or reviewed.
 [RC-006]: ./reviews/rc-006-mil-004-docs-and-wiki.md
 [RC-007]: ./reviews/rc-007-adr-0001.md
 [RC-008]: ./reviews/rc-008-adr-0002.md
+[b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
