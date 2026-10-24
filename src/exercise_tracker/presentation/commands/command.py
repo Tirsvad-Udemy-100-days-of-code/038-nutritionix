@@ -3,12 +3,9 @@
 """
 
 from argparse import ArgumentParser, Namespace
-from typing import Protocol, TextIO
+from typing import Protocol
 
-from exercise_tracker.application.ports.http_gateway import HttpGateway
-from exercise_tracker.domain.value_objects.nutritionix_credentials import (
-    NutritionixCredentials,
-)
+from exercise_tracker.presentation.commands.command_context import CommandContext
 
 
 class Command(Protocol):
@@ -27,18 +24,10 @@ class Command(Protocol):
         """
         ...
 
-    def execute(
-        self,
-        args: Namespace,
-        gateway: HttpGateway,
-        credentials: NutritionixCredentials,
-        out: TextIO,
-    ) -> None:
+    def execute(self, args: Namespace, context: CommandContext) -> None:
         """@brief Run the use case and print its result.
 
         @param args The parsed arguments.
-        @param gateway The port used to send requests.
-        @param credentials The Nutritionix credentials.
-        @param out The stream the result is written to.
+        @param context The ports, credentials and output stream of the run.
         """
         ...

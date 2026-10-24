@@ -3,15 +3,11 @@
 """
 
 from argparse import ArgumentParser, Namespace
-from typing import TextIO
 
-from exercise_tracker.application.ports.http_gateway import HttpGateway
 from exercise_tracker.application.use_cases.get_exercises import get_exercises
 from exercise_tracker.domain.value_objects.exercise import Exercise
 from exercise_tracker.domain.value_objects.exercise_query import ExerciseQuery
-from exercise_tracker.domain.value_objects.nutritionix_credentials import (
-    NutritionixCredentials,
-)
+from exercise_tracker.presentation.commands.command_context import CommandContext
 
 
 def format_exercise(exercise: Exercise) -> str:
@@ -39,21 +35,13 @@ class ExercisesCommand:
         """
         parser.add_argument("sentence", help="what you did, in plain English")
 
-    def execute(
-        self,
-        args: Namespace,
-        gateway: HttpGateway,
-        credentials: NutritionixCredentials,
-        out: TextIO,
-    ) -> None:
+    def execute(self, args: Namespace, context: CommandContext) -> None:
         """@brief Run the get exercises use case and print one line each.
 
         @param args The parsed arguments.
-        @param gateway The port used to send requests.
-        @param credentials The Nutritionix credentials.
-        @param out The stream the exercises are written to.
+        @param context The ports, credentials and output stream of the run.
         @throws InvalidInputError The sentence is blank.
         """
         query = ExerciseQuery(args.sentence)
-        for exercise in get_exercises(gateway, credentials, query):
-            out.write(format_exercise(exercise) + "\n")
+        for exercise in get_exercises(context.gateway, context.credentials, query):
+            context.out.write(format_exercise(exercise) + "\n")
