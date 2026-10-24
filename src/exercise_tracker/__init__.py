@@ -6,6 +6,8 @@ infrastructure and presentation. The functions of the assignment are exported
 here as they are built.
 """
 
+from exercise_tracker.application.use_cases.add_workout_row import add_workout_row
 from exercise_tracker.application.use_cases.get_exercises import get_exercises
+from exercise_tracker.application.use_cases.log_workout import log_workout
 
-__all__: list[str] = ["get_exercises"]
+__all__: list[str] = ["add_workout_row", "get_exercises", "log_workout"]

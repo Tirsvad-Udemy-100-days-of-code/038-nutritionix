@@ -20,21 +20,27 @@ from exercise_tracker.application.errors.malformed_response_error import (
 )
 from exercise_tracker.application.ports.http_gateway import HttpGateway
 from exercise_tracker.domain.errors.invalid_input_error import InvalidInputError
+from exercise_tracker.infrastructure.clock.system_clock import SystemClock
 from exercise_tracker.infrastructure.config.configuration_error import (
     ConfigurationError,
 )
 from exercise_tracker.infrastructure.config.environment_credentials import (
     load_nutritionix_credentials,
 )
+from exercise_tracker.infrastructure.config.sheet_configuration import (
+    load_sheet_configuration,
+)
 from exercise_tracker.infrastructure.http.dry_run_http_gateway import (
     DryRunHttpGateway,
 )
 from exercise_tracker.infrastructure.http.urllib_http_gateway import UrllibHttpGateway
 from exercise_tracker.presentation.commands.command import Command
+from exercise_tracker.presentation.commands.command_context import CommandContext
 from exercise_tracker.presentation.commands.exercises_command import ExercisesCommand
+from exercise_tracker.presentation.commands.log_command import LogCommand
 
 ## @brief The commands of the program, one per use case.
-COMMANDS: tuple[Command, ...] = (ExercisesCommand(),)
+COMMANDS: tuple[Command, ...] = (ExercisesCommand(), LogCommand())
 
 
 def build_parser(commands: Sequence[Command]) -> argparse.ArgumentParser:
@@ -96,8 +102,14 @@ def main(
     command = next(c for c in COMMANDS if c.name == args.command)
     gateway = _build_gateway(args.dry_run, out)
     try:
-        credentials = load_nutritionix_credentials(env)
-        command.execute(args, gateway, credentials, out)
+        context = CommandContext(
+            gateway,
+            load_nutritionix_credentials(env),
+            SystemClock(),
+            lambda: load_sheet_configuration(env),
+            out,
+        )
+        command.execute(args, context)
     except (InvalidInputError, ConfigurationError) as error:
         _report(error)
         return constants.EXIT_INVALID
