@@ -10,7 +10,7 @@
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-016 for MIL-003 task 7 | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-016 for MIL-003 task 7 | [bf42eed] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-015 for the re-review of MIL-003 | [2421865] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-014 for MIL-004 | [77d840f] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-013 for MIL-003 | [05ca87b] |
@@ -78,3 +78,4 @@ updated whenever an artifact instance is created or reviewed.
 [05ca87b]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/05ca87b28a2113c927ffb22fde75a77ebe0476c1
 [77d840f]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/77d840f9d01a643508bb5251803ff0b7750c392f
 [2421865]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/2421865cd6604b0aae14fd3799ccd032f713d622
+[bf42eed]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/bf42eedca536619bdc54dca57f5c159d45c2113b

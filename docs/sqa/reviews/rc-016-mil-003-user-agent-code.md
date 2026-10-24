@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [bf42eed] |
 
 ---
 
@@ -59,3 +59,4 @@ Go — All Mandatory criteria of QC-PY-001 pass or are not applicable.
 
 [MIL-003]: ../../milestones/mil-003-sheety-log.md
 [QC-PY-001]: ../../../framework/qc/code/qc-programming-python.md
+[bf42eed]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/bf42eedca536619bdc54dca57f5c159d45c2113b
