@@ -12,7 +12,7 @@
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Final state: milestone links and open issues of the wiki | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Final state: milestone links and open issues of the wiki | [77d840f] |
 
 ---
 
@@ -101,3 +101,4 @@ A No-Go on a gateway moves every later date by the time of the rework; the end d
 [MIL-002 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/234
 [MIL-003 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/235
 [MIL-004 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/236
+[77d840f]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/77d840f9d01a643508bb5251803ff0b7750c392f
