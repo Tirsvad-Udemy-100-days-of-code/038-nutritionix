@@ -2,7 +2,7 @@
 
 # Brug
 
-Sæt `--dry-run` før kommandonavnet for at se kaldene uden at sende dem. Skriv én slags øvelse pr. sætning, som opgaven anbefaler: "ran 5k" og "cycled for 20 minutes" er to sætninger og dermed to kommandoer.
+Sæt `--dry-run` før kommandonavnet for at se kaldene uden at sende dem. Skriv én slags øvelse pr. sætning, højst 50 tegn, som opgaven anbefaler: "ran 5k" og "cycled for 20 minutes" er to sætninger og dermed to kommandoer.
 
 ## Kommandoerne
 

@@ -2,7 +2,7 @@
 
 # Usage
 
-Put `--dry-run` before the command name to see the requests without sending them. Give one kind of exercise per sentence, as the assignment advises: "ran 5k" and "cycled for 20 minutes" are two sentences, and so two commands.
+Put `--dry-run` before the command name to see the requests without sending them. Give one kind of exercise per sentence, at most 50 characters, as the assignment advises: "ran 5k" and "cycled for 20 minutes" are two sentences, and so two commands.
 
 ## The commands
 

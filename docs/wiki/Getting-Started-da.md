@@ -6,7 +6,7 @@
 
 - Python 3.13 eller nyere.
 - Ingen runtime-afhængighed.
-- For at sende rigtige kald: et gratis Nutritionix-applikations-id og en API-nøgle samt et Google Sheet med navnet `workouts` og kolonnerne Date, Time, Exercise, Duration og Calories, udgivet gennem et Sheety-endpoint.
+- For at sende rigtige kald: et applikations-id og en API-nøgle til kursets endpoint for naturligt sprog og øvelser (`https://app.100daysofpython.dev/v1/nutrition/natural/exercise`) samt et Google Sheet med navnet `workouts` og kolonnerne Date, Time, Exercise, Duration og Calories, udgivet gennem et Sheety-endpoint.
 - Valgfrit: [Doxygen](https://www.doxygen.nl/) til at bygge kildedokumentationen.
 
 ## Opret og brug et lokalt .venv

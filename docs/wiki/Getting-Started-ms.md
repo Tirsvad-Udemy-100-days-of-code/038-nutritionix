@@ -6,7 +6,7 @@
 
 - Python 3.13 atau lebih baharu.
 - Tiada kebergantungan runtime.
-- Untuk menghantar permintaan sebenar: id aplikasi Nutritionix percuma dan kunci API, serta Google Sheet bernama `workouts` dengan lajur Date, Time, Exercise, Duration dan Calories, diterbitkan melalui endpoint Sheety.
+- Untuk menghantar permintaan sebenar: id aplikasi dan kunci API untuk endpoint senaman bahasa semula jadi bagi perkhidmatan kursus (`https://app.100daysofpython.dev/v1/nutrition/natural/exercise`), serta Google Sheet bernama `workouts` dengan lajur Date, Time, Exercise, Duration dan Calories, diterbitkan melalui endpoint Sheety.
 - Pilihan: [Doxygen](https://www.doxygen.nl/) untuk membina dokumentasi kod sumber.
 
 ## Cipta dan guna .venv setempat
