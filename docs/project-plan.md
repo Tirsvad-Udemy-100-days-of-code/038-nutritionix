@@ -11,7 +11,8 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | [b64ad78] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | [b64ad78] |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Final state: milestone links and open issues of the wiki | [77d840f] |
 
 ---
 
@@ -31,10 +32,10 @@ The plan schedules the four gateways that take the Exercise Tracker from an empt
 
 | Gateway | Document | Window | Decision date | Owner | Stories | Main deliverable | Milestone |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Project setup and tooling | [MIL-001] | 2026-10-24 to 2026-10-25 | 2026-10-25 | S01 | none (ADR-0002) | pyproject, .gitignore, Doxyfile, constants.py, first README, workflows, description and topics | |
-| Nutritionix exercises | [MIL-002] | 2026-10-25 to 2026-10-26 | 2026-10-26 | S01 | none (ADR-0002) | `get_exercises`, layers, adapters, configuration | |
-| Sheety log | [MIL-003] | 2026-10-26 to 2026-10-27 | 2026-10-27 | S01 | none (ADR-0002) | `add_workout_row`, authentication, `log` command | |
-| Documentation and wiki | [MIL-004] | 2026-10-27 to 2026-10-28 | 2026-10-28 | S01 | none (ADR-0002) | README, screenshots, wiki in three languages, Doxygen | |
+| Project setup and tooling | [MIL-001] | 2026-10-24 to 2026-10-25 | 2026-10-25 | S01 | none (ADR-0002) | pyproject, .gitignore, Doxyfile, constants.py, first README, workflows, description and topics | [MIL-001 milestone] |
+| Nutritionix exercises | [MIL-002] | 2026-10-25 to 2026-10-26 | 2026-10-26 | S01 | none (ADR-0002) | `get_exercises`, layers, adapters, configuration | [MIL-002 milestone] |
+| Sheety log | [MIL-003] | 2026-10-26 to 2026-10-27 | 2026-10-27 | S01 | none (ADR-0002) | `add_workout_row`, authentication, `log` command | [MIL-003 milestone] |
+| Documentation and wiki | [MIL-004] | 2026-10-27 to 2026-10-28 | 2026-10-28 | S01 | none (ADR-0002) | README, screenshots, wiki in three languages, Doxygen | [MIL-004 milestone] |
 
 ```plantuml
 @startgantt
@@ -84,6 +85,8 @@ A No-Go on a gateway moves every later date by the time of the rework; the end d
 - The Sheety endpoint is not in the brief, so `SHEET_ENDPOINT` in the personal `.env` is empty and no live call is made.
 - The secret `TOKEN_FOR_GITEA_WIKI` is not set by the AI; S01 sets it in the organisation before the wiki can be published.
 - No live call to Nutritionix or Sheety is made; the screenshots show the dry run and the tests.
+- The Danish and Bahasa Malaysia wiki pages were written by the AI; no native-speaker review is recorded.
+- The wiki publish workflow was installed in MIL-001 together with the other workflows, so task 5 of MIL-004 needed no change.
 
 ---
 
@@ -94,3 +97,8 @@ A No-Go on a gateway moves every later date by the time of the rework; the end d
 [MIL-003]: ./milestones/mil-003-sheety-log.md
 [MIL-004]: ./milestones/mil-004-docs-and-wiki.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
+[MIL-001 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/233
+[MIL-002 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/234
+[MIL-003 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/235
+[MIL-004 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/236
+[77d840f]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/77d840f9d01a643508bb5251803ff0b7750c392f

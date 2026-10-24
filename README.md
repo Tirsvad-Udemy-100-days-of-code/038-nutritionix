@@ -92,7 +92,20 @@ Give one kind of exercise per query, as the assignment advises: "ran 5k" and "cy
 | 1. Ask Nutritionix and add a row per exercise to the sheet | `python -m exercise_tracker log "ran 5k"` | `get_exercises`, `add_workout_row` |
 | Try it without sending anything | `python -m exercise_tracker --dry-run log "ran 5k"` | |
 
-The installed program is also available as `exercise-tracker`. The date is `dd/mm/YYYY` and the time `HH:MM:SS`, both from the clock of your computer.
+The command `exercises "ran 5k"` only asks Nutritionix and prints the exercises; the sheet is not touched. The installed program is also available as `exercise-tracker`. The date is `dd/mm/YYYY` and the time `HH:MM:SS`, both from the clock of your computer. In dry-run mode the answer of Nutritionix is a built-in sample, so you can see both requests without an account.
+
+| Exit code | Meaning |
+| --- | --- |
+| 0 | Every request was accepted (or the dry run finished) |
+| 1 | An API refused the request |
+| 2 | Invalid input or a missing environment variable; nothing was sent |
+| 3 | An API could not be reached |
+
+The functions can be used from Python as well: `from exercise_tracker import get_exercises, add_workout_row, log_workout`. The [wiki][wiki] shows an example.
+
+![The log command in dry-run mode][shot-log]
+
+![The exercises command in dry-run mode][shot-exercises]
 
 ## 🧪 Tests
 
@@ -111,6 +124,8 @@ python -m mypy --strict src tests
 ```
 
 Build the source documentation with `doxygen Doxyfile`; the result is in `doxygen/html/index.html`.
+
+![The test run][shot-tests]
 
 ## 📄 License
 
@@ -149,6 +164,10 @@ The workflows in `.gitea/workflows/` call the shared workflows of `TirSystem/git
 
 [repository]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix
 [documentation]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/wiki
+[wiki]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/wiki
+[shot-log]: ./docs/images/log-dry-run.png
+[shot-exercises]: ./docs/images/exercises-dry-run.png
+[shot-tests]: ./docs/images/tests.png
 [issues]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/issues
 [nutritionix-docs]: https://docx.syndigo.com/developers/docs/natural-language-for-exercise
 [sheety-docs]: https://sheety.co/docs
