@@ -31,14 +31,18 @@ class RecordedRequest:
 class LocalServer:
     """@brief Handle of a running server: its address and what it saw."""
 
-    def __init__(self, status: int, payload: bytes) -> None:
+    def __init__(
+        self, status: int, payload: bytes, routes: dict[str, bytes] | None = None
+    ) -> None:
         """@brief Create the handle.
 
         @param status The status code to answer with.
         @param payload The raw body to answer with.
+        @param routes The raw body per path; the payload answers other paths.
         """
         self.status = status
         self.payload = payload
+        self.routes = routes if routes is not None else {}
         self.requests: list[RecordedRequest] = []
         self.port = 0
 
@@ -48,18 +52,29 @@ class LocalServer:
 
         @return The base URL with the ephemeral port.
         """
-        return f"http://{LOCAL_HOST}:{self.port}/v2/natural/exercise"
+        return self.url_for("/v2/natural/exercise")
+
+    def url_for(self, path: str) -> str:
+        """@brief Build the URL of a path on the server.
+
+        @param path The path, starting with a slash.
+        @return The URL with the ephemeral port.
+        """
+        return f"http://{LOCAL_HOST}:{self.port}{path}"
 
 
 @contextmanager
-def serve(status: int = 200, payload: bytes = b"{}") -> Iterator[LocalServer]:
+def serve(
+    status: int = 200, payload: bytes = b"{}", routes: dict[str, bytes] | None = None
+) -> Iterator[LocalServer]:
     """@brief Run a local server on an ephemeral port.
 
     @param status The status code to answer with.
     @param payload The raw body to answer with.
+    @param routes The raw body per path; the payload answers other paths.
     @return A context that yields the server handle.
     """
-    state = LocalServer(status, payload)
+    state = LocalServer(status, payload, routes)
 
     class Handler(BaseHTTPRequestHandler):
         def do_POST(self) -> None:  # noqa: N802 - name fixed by http.server
@@ -72,11 +87,12 @@ def serve(status: int = 200, payload: bytes = b"{}") -> Iterator[LocalServer]:
                     self.rfile.read(length),
                 )
             )
+            payload = state.routes.get(self.path, state.payload)
             self.send_response(state.status)
             self.send_header("Content-Type", "application/json")
-            self.send_header("Content-Length", str(len(state.payload)))
+            self.send_header("Content-Length", str(len(payload)))
             self.end_headers()
-            self.wfile.write(state.payload)
+            self.wfile.write(payload)
 
         def log_message(self, format: str, *args: object) -> None:  # noqa: A002
             return

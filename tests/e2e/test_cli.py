@@ -129,3 +129,110 @@ def test_module_runs_in_a_subprocess_with_dry_run() -> None:
     assert result.returncode == EXIT_OK
     assert "Running: 30 min, 300 kcal" in result.stdout
     assert "test-api-key" not in result.stdout + result.stderr
+
+
+LOG_ENV = {
+    **ENV,
+    "SHEET_ENDPOINT": "https://api.example.test/sheet/workouts",
+    "TOKEN": "test-token",
+}
+LOG_SECRETS = ("test-app-id", "test-api-key", "test-token")
+
+
+def test_log_dry_run_prints_both_requests_with_secrets_hidden() -> None:
+    out = io.StringIO()
+    code = main(["--dry-run", "log", "ran 5k"], LOG_ENV, out)
+    text = out.getvalue()
+    assert code == EXIT_OK
+    assert "POST https://trackapi.nutritionix.com/v2/natural/exercise" in text
+    assert "POST https://api.example.test/sheet/workouts" in text
+    assert f"Authorization: {HIDDEN_SECRET}" in text
+    assert '"exercise": "Running"' in text
+    assert text.rstrip().splitlines()[-1].split(" ")[2:] == ["Running", "30", "300"]
+    for secret in LOG_SECRETS:
+        assert secret not in text
+
+
+def test_log_missing_sheet_endpoint_is_invalid_and_sends_nothing(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    env = {k: v for k, v in LOG_ENV.items() if k != "SHEET_ENDPOINT"}
+    out = io.StringIO()
+    code = main(["--dry-run", "log", "ran 5k"], env, out)
+    err = capsys.readouterr().err
+    assert code == EXIT_INVALID
+    assert "SHEET_ENDPOINT" in err
+    assert out.getvalue() == ""
+    for secret in LOG_SECRETS:
+        assert secret not in err
+
+
+def test_log_missing_authorization_names_the_variables(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    env = {k: v for k, v in LOG_ENV.items() if k != "TOKEN"}
+    code = main(["--dry-run", "log", "ran 5k"], env, io.StringIO())
+    assert code == EXIT_INVALID
+    assert "TOKEN" in capsys.readouterr().err
+
+
+def test_log_blank_sentence_is_invalid() -> None:
+    assert main(["--dry-run", "log", " "], LOG_ENV, io.StringIO()) == EXIT_INVALID
+
+
+def test_log_posts_the_rows_to_a_local_server(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    answer = {"exercises": [{"name": "running", "duration_min": 30, "nf_calories": 3}]}
+    out = io.StringIO()
+    with serve(200, json_payload(answer)) as server:
+        monkeypatch.setattr(
+            "exercise_tracker.presentation.cli.UrllibHttpGateway",
+            lambda: _GatewayTo(server.url),
+        )
+        code = main(["log", "ran 5k"], LOG_ENV, out)
+    assert code == EXIT_OK
+    assert len(server.requests) == 2
+    assert server.requests[1].headers["authorization"] == "Bearer test-token"
+    assert out.getvalue().rstrip().endswith(" Running 30 3")
+
+
+def test_log_sheet_refusal_gives_rejected_code(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    with serve(401, json_payload({"message": "bad token"})) as server:
+        monkeypatch.setattr(
+            "exercise_tracker.presentation.cli.UrllibHttpGateway",
+            lambda: _GatewayTo(server.url),
+        )
+        code = main(["log", "x"], LOG_ENV, io.StringIO())
+    assert code == EXIT_REJECTED
+    assert "test-token" not in capsys.readouterr().err
+
+
+def test_log_unreachable_server_gives_unreachable_code(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        "exercise_tracker.presentation.cli.UrllibHttpGateway",
+        lambda: _GatewayTo("http://127.0.0.1:9/"),
+    )
+    assert main(["log", "x"], LOG_ENV, io.StringIO()) == EXIT_UNREACHABLE
+
+
+def test_log_module_runs_in_a_subprocess_with_dry_run() -> None:
+    env = {**os.environ, **LOG_ENV, "PYTHONPATH": "src"}
+    result = subprocess.run(
+        [sys.executable, "-m", "exercise_tracker", "--dry-run", "log", "ran 5k"],
+        capture_output=True,
+        text=True,
+        env=env,
+        timeout=30,
+        check=False,
+    )
+    output = result.stdout + result.stderr
+    assert result.returncode == EXIT_OK
+    assert "POST https://api.example.test/sheet/workouts" in result.stdout
+    assert "Running 30 300" in result.stdout
+    for secret in LOG_SECRETS:
+        assert secret not in output
