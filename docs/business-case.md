@@ -11,7 +11,8 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Scope names the 100 Days of Python endpoint of the course instead of the Nutritionix host, and the 50-character query limit | [fdf51d6] |
 
 ---
 
@@ -47,7 +48,7 @@ A tidy repository turns the lecture code into a reference that others can run in
 ### In Scope
 
 - Python 3.13 or later, a local `.venv`, `pyproject.toml`, a Python `.gitignore` and pytest.
-- A query to Nutritionix (`POST /v2/natural/exercise` with the `x-app-id` and `x-app-key` headers) and the parsing of its exercises.
+- A query to the natural language exercise endpoint of the course service (`POST https://app.100daysofpython.dev/v1/nutrition/natural/exercise` with the `x-app-id` and `x-app-key` headers, a query of at most 50 characters) and the parsing of its exercises. The answer has the shape of the Nutritionix API.
 - One Sheety `POST` per exercise with a camelCase `workout` body, `Authorization: Bearer <token>` or basic authentication.
 - A command line to run the program with a dry run that prints the requests (secrets hidden) and sends nothing.
 - A `constants.py` for constants, Doxygen comments in the source and a `Doxyfile`.
@@ -146,3 +147,4 @@ Proceed — the scope is small, the risks are mitigated and the result is useful
 
 [SA-001]: ./stakeholder-analysis.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
+[fdf51d6]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/fdf51d6cd3c01862929c5c696d42b04800f3affb

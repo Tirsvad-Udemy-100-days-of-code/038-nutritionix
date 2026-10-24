@@ -17,6 +17,7 @@ from exercise_tracker.constants import (
     EXIT_REJECTED,
     EXIT_UNREACHABLE,
     HIDDEN_SECRET,
+    MAX_QUERY_LENGTH,
 )
 from exercise_tracker.infrastructure.http.urllib_http_gateway import UrllibHttpGateway
 from exercise_tracker.presentation.cli import main
@@ -30,7 +31,7 @@ def test_dry_run_prints_request_and_the_sample_exercise() -> None:
     code = main(["--dry-run", "exercises", "ran 5k"], ENV, out)
     text = out.getvalue()
     assert code == EXIT_OK
-    assert "POST https://trackapi.nutritionix.com/v2/natural/exercise" in text
+    assert "POST https://app.100daysofpython.dev/v1/nutrition/natural/exercise" in text
     assert f"x-app-key: {HIDDEN_SECRET}" in text
     assert "test-app-id" not in text
     assert "test-api-key" not in text
@@ -42,6 +43,42 @@ def test_blank_sentence_is_invalid(capsys: pytest.CaptureFixture[str]) -> None:
     assert main(["--dry-run", "exercises", "  "], ENV, out) == EXIT_INVALID
     assert out.getvalue() == ""
     assert "blank" in capsys.readouterr().err
+
+
+def test_too_long_sentence_is_invalid_and_sends_nothing(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    out = io.StringIO()
+    sentence = "a" * (MAX_QUERY_LENGTH + 1)
+    assert main(["--dry-run", "exercises", sentence], ENV, out) == EXIT_INVALID
+    err = capsys.readouterr().err
+    assert out.getvalue() == ""
+    assert str(MAX_QUERY_LENGTH) in err
+    assert "test-api-key" not in err
+    assert "test-app-id" not in err
+
+
+def test_sentence_of_the_maximum_length_is_accepted() -> None:
+    sentence = "a" * MAX_QUERY_LENGTH
+    assert main(["--dry-run", "exercises", sentence], ENV, io.StringIO()) == EXIT_OK
+
+
+def test_nested_api_error_message_is_shown(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    answer = {
+        "error": {"code": "UNAUTHENTICATED", "message": "Invalid app credentials"}
+    }
+    with serve(401, json_payload(answer)) as server:
+        monkeypatch.setattr(
+            "exercise_tracker.presentation.cli.UrllibHttpGateway",
+            lambda: _GatewayTo(server.url),
+        )
+        code = main(["exercises", "x"], ENV, io.StringIO())
+    err = capsys.readouterr().err
+    assert code == EXIT_REJECTED
+    assert "Invalid app credentials" in err
+    assert "test-api-key" not in err
 
 
 def test_missing_variable_is_invalid_and_shows_no_value(
@@ -144,7 +181,7 @@ def test_log_dry_run_prints_both_requests_with_secrets_hidden() -> None:
     code = main(["--dry-run", "log", "ran 5k"], LOG_ENV, out)
     text = out.getvalue()
     assert code == EXIT_OK
-    assert "POST https://trackapi.nutritionix.com/v2/natural/exercise" in text
+    assert "POST https://app.100daysofpython.dev/v1/nutrition/natural/exercise" in text
     assert "POST https://api.example.test/sheet/workouts" in text
     assert f"Authorization: {HIDDEN_SECRET}" in text
     assert '"exercise": "Running"' in text

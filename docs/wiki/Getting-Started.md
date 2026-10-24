@@ -6,7 +6,7 @@
 
 - Python 3.13 or later.
 - No runtime dependency.
-- To send real requests: a free Nutritionix application id and API key, and a Google Sheet named `workouts` with the columns Date, Time, Exercise, Duration and Calories, published through a Sheety endpoint.
+- To send real requests: an application id and API key for the natural language exercise endpoint of the course service (`https://app.100daysofpython.dev/v1/nutrition/natural/exercise`), and a Google Sheet named `workouts` with the columns Date, Time, Exercise, Duration and Calories, published through a Sheety endpoint.
 - Optional: [Doxygen](https://www.doxygen.nl/) to build the source documentation.
 
 ## Create and use a local .venv

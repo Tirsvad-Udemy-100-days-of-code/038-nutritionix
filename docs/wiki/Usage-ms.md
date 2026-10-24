@@ -2,7 +2,7 @@
 
 # Penggunaan
 
-Letakkan `--dry-run` sebelum nama arahan untuk melihat permintaan tanpa menghantarnya. Beri satu jenis senaman bagi setiap ayat, seperti yang disarankan oleh tugasan: "ran 5k" dan "cycled for 20 minutes" ialah dua ayat, maka dua arahan.
+Letakkan `--dry-run` sebelum nama arahan untuk melihat permintaan tanpa menghantarnya. Beri satu jenis senaman bagi setiap ayat, paling banyak 50 aksara, seperti yang disarankan oleh tugasan: "ran 5k" dan "cycled for 20 minutes" ialah dua ayat, maka dua arahan.
 
 ## Arahan
 

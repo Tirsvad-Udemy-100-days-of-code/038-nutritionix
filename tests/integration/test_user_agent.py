@@ -13,7 +13,7 @@ USER_AGENT_KEY = constants.HEADER_USER_AGENT.lower()
 
 @pytest.mark.parametrize(
     "path",
-    ["/v2/natural/exercise", "/token/sheet/workouts"],
+    ["/v1/nutrition/natural/exercise", "/token/sheet/workouts"],
     ids=["nutritionix", "sheety"],
 )
 def test_post_sends_exercise_tracker_user_agent(path: str) -> None:

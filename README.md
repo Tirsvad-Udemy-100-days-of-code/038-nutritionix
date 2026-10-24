@@ -37,7 +37,7 @@ No key, token or endpoint is in the source. They are read from the process envir
 - Python 3.13 or later, to run the code and the tests.
 - No runtime dependency: HTTP calls use the standard library (decision [ADR-0001][ADR-0001]).
 - `pytest`, `pytest-cov`, `ruff`, `mypy` and `pyyaml` for development; they are installed with the `dev` extra.
-- A free [Nutritionix][nutritionix-docs] application id and API key, and a Google Sheet with a [Sheety][sheety-docs] endpoint, to send real requests. The sheet is named `workouts` and has the columns Date, Time, Exercise, Duration and Calories, so that Sheety expects the row inside `workout`.
+- An application id and API key for the natural language exercise endpoint of the course service (`https://app.100daysofpython.dev/v1/nutrition/natural/exercise`, which has the same answer as [Nutritionix][nutritionix-docs]), and a Google Sheet with a [Sheety][sheety-docs] endpoint, to send real requests. The sheet is named `workouts` and has the columns Date, Time, Exercise, Duration and Calories, so that Sheety expects the row inside `workout`.
 - [Doxygen][doxygen] 1.9 or later, only if you want to build the source documentation.
 
 ## 🛠️ Setup
@@ -85,7 +85,7 @@ In PowerShell use `$env:APP_ID = "your-app-id"` and so on. Keep your own keys in
 
 ## ▶️ Run
 
-Give one kind of exercise per query, as the assignment advises: "ran 5k" and "cycled for 20 minutes" are two queries, and so two sets of rows. Add `--dry-run` before the command name to print the requests, with the secrets hidden, and send nothing. Remove it to send the requests.
+Give one kind of exercise per query, at most 50 characters, as the assignment advises: "ran 5k" and "cycled for 20 minutes" are two queries, and so two sets of rows. Add `--dry-run` before the command name to print the requests, with the secrets hidden, and send nothing. Remove it to send the requests.
 
 | Step of the assignment | Command | Python function |
 | --- | --- | --- |
