@@ -1,0 +1,30 @@
+# English comments check (Gitea Actions).
+#
+# Purpose:  fail a pull request that adds a comment or docstring that is not
+#           English (ADR-0012 of TirSystem/github-action).
+# Trigger:  a pull request to main.
+# Secrets:  none required. The optional secret REPORT_TOKEN lets the workflow
+#           comment as a named user; without it the Actions bot comments.
+# Changes outside the repository: one comment on the pull request.
+# Decision: MIL-001 of docs/project-plan.md. The shared workflow is called at
+#           the major tag v2 of the same organisation.
+name: English comments
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: english-comments-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  english-comments:
+    name: Comments are English
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: TirSystem/github-action/.gitea/workflows/english-comments.yml@v2
+    with:
+      exclude: "docs/**"
+      allowed-words-file: .english-comments-allowed-words

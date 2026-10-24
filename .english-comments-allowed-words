@@ -1,0 +1,4 @@
+# Words that the English comments check never judges, one per line.
+# Read by: the english-comments workflow (allowed-words-file). Decision: MIL-001.
+nutritionix
+sheety

@@ -1,0 +1,39 @@
+# Doxygen configuration of the Exercise Tracker.
+# Generate the API documentation with:   doxygen Doxyfile
+# The output goes to doxygen/ (ignored by git); open doxygen/html/index.html.
+# The source uses Doxygen commands (@file, @brief, @param, @return) in Python
+# docstrings and in "##" comments. Every setting not listed keeps its default.
+
+PROJECT_NAME           = "Exercise Tracker"
+PROJECT_BRIEF          = "Log workouts from plain English with the Nutritionix and Sheety APIs"
+OUTPUT_DIRECTORY       = doxygen
+CREATE_SUBDIRS         = NO
+
+# Python is documented with the Java-style optimisation of Doxygen.
+OPTIMIZE_OUTPUT_JAVA   = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+JAVADOC_AUTOBRIEF      = YES
+AUTOLINK_SUPPORT       = YES
+
+# Input
+INPUT                  = src
+FILE_PATTERNS          = *.py
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = */__pycache__/* */.venv/*
+
+# Output
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = html
+SOURCE_BROWSER         = YES
+HAVE_DOT               = NO
+
+# Messages
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+WARN_AS_ERROR          = NO

@@ -1,0 +1,74 @@
+# Project configuration for the Exercise Tracker (Nutritionix and Sheety
+# assignment of the Udemy course "100 Days of Code"). Read by pip, setuptools,
+# pytest, ruff, mypy and coverage. Decision: ADR-0001 (no runtime dependency).
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exercise-tracker"
+version = "0.1.0"
+description = "Log workouts from plain English: Nutritionix finds the calories, Sheety writes the row."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Jens Tirsvad Nielsen" }]
+keywords = ["nutritionix", "sheety", "exercise-tracker", "100-days-of-code"]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "Environment :: Console",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# Every development tool is pinned; ruff and mypy match the shared quality workflow.
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "ruff==0.6.9",
+    "mypy==1.11.2",
+    "pyyaml==6.0.3",
+    "types-pyyaml==6.0.12.20260906",
+]
+
+[project.scripts]
+exercise-tracker = "exercise_tracker.presentation.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["exercise_tracker"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "N"]
+
+[tool.mypy]
+strict = true
+mypy_path = "src"
+python_version = "3.13"
+
+# The shared quality workflow runs mypy without installing the dependencies.
+[[tool.mypy.overrides]]
+module = ["pytest", "pytest.*", "yaml", "yaml.*"]
+ignore_missing_imports = true
+
+# Without pytest installed, its decorators are Any; the tests may use them.
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_decorators = false

@@ -1,0 +1,13 @@
+# yamllint configuration (yamllint 1.35.1) for the workflow files.
+# Read by: yamllint. Decision: MIL-001 of docs/project-plan.md.
+extends: default
+
+rules:
+  line-length:
+    max: 120
+  # "on" is the trigger key of a workflow, not a boolean.
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: false
+  # Workflow files do not start with the document marker.
+  document-start: disable
