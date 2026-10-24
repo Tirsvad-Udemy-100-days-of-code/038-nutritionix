@@ -105,3 +105,27 @@ EXIT_INVALID = 2
 
 ## @brief Exit code: an API could not be reached.
 EXIT_UNREACHABLE = 3
+
+## @brief HTTP method of every request of the program.
+HTTP_METHOD_POST = "POST"
+
+## @brief Lowest HTTP status code that is an error answer.
+HTTP_ERROR_STATUS_MIN = 400
+
+## @brief HTTP status code of a successful answer.
+HTTP_STATUS_OK = 200
+
+## @brief Header names whose values are secrets, in lower case.
+SECRET_HEADER_NAMES = (HEADER_APP_ID.lower(), HEADER_APP_KEY.lower(), "authorization")
+
+## @brief Longest API message, in characters, that an error carries.
+MAX_API_MESSAGE_LENGTH = 200
+
+## @brief JSON field: the human readable message of an API error answer.
+FIELD_MESSAGE = "message"
+
+## @brief DRY-RUN SAMPLE ONLY: the canned answer of the dry-run gateway.
+#  This is not real Nutritionix data; it is returned when nothing is sent.
+DRY_RUN_SAMPLE_BODY_JSON = (
+    '{"exercises":[{"name":"running","duration_min":30.0,"nf_calories":300.0}]}'
+)

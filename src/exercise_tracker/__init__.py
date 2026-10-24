@@ -6,4 +6,6 @@ infrastructure and presentation. The functions of the assignment are exported
 here as they are built.
 """
 
-__all__: list[str] = []
+from exercise_tracker.application.use_cases.get_exercises import get_exercises
+
+__all__: list[str] = ["get_exercises"]

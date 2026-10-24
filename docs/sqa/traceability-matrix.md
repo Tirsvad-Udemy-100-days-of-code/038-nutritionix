@@ -4,13 +4,14 @@
 | Key | Value |
 | --- | --- |
 | ID | TM-001 |
-| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008] |, [RC-009], [RC-010], [RC-011]
+| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008] |, [RC-009], [RC-010], [RC-011], [RC-012]
 
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-009 to RC-011 for MIL-001 | [0c1627b] |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-012 for MIL-002 | [a8889c5] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-009 to RC-011 for MIL-001 | [0c1627b] |
 
 ---
 
@@ -28,7 +29,7 @@ updated whenever an artifact instance is created or reviewed.
 | [SA-001] | SA | en | it | [BC-001] | [PP-001] | [RC-002] |
 | [PP-001] | PP | en | it | [BC-001], [SA-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004] | - |
 | [MIL-001] | MIL | en | it | [BC-001], [PP-001] | [MIL-002] | [RC-003], [RC-009], [RC-010], [RC-011] |
-| [MIL-002] | MIL | en | it | [BC-001], [PP-001], [MIL-001] | [MIL-003] | [RC-004] |
+| [MIL-002] | MIL | en | it | [BC-001], [PP-001], [MIL-001] | [MIL-003] | [RC-004], [RC-012] |
 | [MIL-003] | MIL | en | it | [BC-001], [PP-001], [MIL-002] | [MIL-004] | [RC-005] |
 | [MIL-004] | MIL | en | it | [BC-001], [PP-001], [MIL-003] | - | [RC-006] |
 | [ADR-0001] | ADR | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-002] | [RC-007] |
@@ -62,5 +63,7 @@ updated whenever an artifact instance is created or reviewed.
 [RC-009]: ./reviews/rc-009-mil-001-code.md
 [RC-010]: ./reviews/rc-010-mil-001-yaml.md
 [RC-011]: ./reviews/rc-011-mil-001-workflows.md
+[RC-012]: ./reviews/rc-012-mil-002-code.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
 [0c1627b]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/0c1627b24991d5659f04d5d128919b2db3d4f246
+[a8889c5]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/a8889c53cf57967762325668735e2b16f628979f
