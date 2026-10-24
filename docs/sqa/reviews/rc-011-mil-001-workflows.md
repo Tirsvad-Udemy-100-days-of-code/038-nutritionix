@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [0c1627b] |
 
 ---
 
@@ -65,3 +65,4 @@ Go — All Mandatory criteria of QC-WF-001 pass.
 
 [MIL-001]: ../../milestones/mil-001-project-setup.md
 [QC-WF-001]: ../../../framework/qc/code/qc-workflow.md
+[0c1627b]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/0c1627b24991d5659f04d5d128919b2db3d4f246
