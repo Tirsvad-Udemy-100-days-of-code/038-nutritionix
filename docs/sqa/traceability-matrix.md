@@ -4,13 +4,14 @@
 | Key | Value |
 | --- | --- |
 | ID | TM-001 |
-| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008] |, [RC-009], [RC-010], [RC-011], [RC-012], [RC-013], [RC-014]
+| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008] |, [RC-009], [RC-010], [RC-011], [RC-012], [RC-013], [RC-014], [RC-015]
 
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-014 for MIL-004 | [77d840f] |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-015 for the re-review of MIL-003 | pending |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-014 for MIL-004 | [77d840f] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-013 for MIL-003 | [05ca87b] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-012 for MIL-002 | [a8889c5] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-009 to RC-011 for MIL-001 | [0c1627b] |
@@ -32,7 +33,7 @@ updated whenever an artifact instance is created or reviewed.
 | [PP-001] | PP | en | it | [BC-001], [SA-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004] | - |
 | [MIL-001] | MIL | en | it | [BC-001], [PP-001] | [MIL-002] | [RC-003], [RC-009], [RC-010], [RC-011] |
 | [MIL-002] | MIL | en | it | [BC-001], [PP-001], [MIL-001] | [MIL-003] | [RC-004], [RC-012] |
-| [MIL-003] | MIL | en | it | [BC-001], [PP-001], [MIL-002] | [MIL-004] | [RC-005], [RC-013] |
+| [MIL-003] | MIL | en | it | [BC-001], [PP-001], [MIL-002] | [MIL-004] | [RC-005], [RC-013], [RC-015] |
 | [MIL-004] | MIL | en | it | [BC-001], [PP-001], [MIL-003] | - | [RC-006], [RC-014] |
 | [ADR-0001] | ADR | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-002] | [RC-007] |
 | [ADR-0002] | ADR | - | - | [BC-001] | [MIL-002], [MIL-003] | [RC-008] |
@@ -68,6 +69,7 @@ updated whenever an artifact instance is created or reviewed.
 [RC-012]: ./reviews/rc-012-mil-002-code.md
 [RC-013]: ./reviews/rc-013-mil-003-code.md
 [RC-014]: ./reviews/rc-014-mil-004-code.md
+[RC-015]: ./reviews/rc-015-mil-003-sheety-log-rereview.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
 [0c1627b]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/0c1627b24991d5659f04d5d128919b2db3d4f246
 [a8889c5]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/a8889c53cf57967762325668735e2b16f628979f
