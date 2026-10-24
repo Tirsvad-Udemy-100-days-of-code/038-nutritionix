@@ -52,7 +52,7 @@ class LocalServer:
 
         @return The base URL with the ephemeral port.
         """
-        return self.url_for("/v2/natural/exercise")
+        return self.url_for("/v1/nutrition/natural/exercise")
 
     def url_for(self, path: str) -> str:
         """@brief Build the URL of a path on the server.

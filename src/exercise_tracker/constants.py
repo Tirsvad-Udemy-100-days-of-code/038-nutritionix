@@ -4,8 +4,17 @@
 Every constant of the project is defined here, once.
 """
 
-## @brief URL of the Nutritionix natural language exercise endpoint.
-NUTRITIONIX_EXERCISE_URL = "https://trackapi.nutritionix.com/v2/natural/exercise"
+## @brief URL of the natural language exercise endpoint of the course service
+#  (100 Days of Python); it is Nutritionix compatible.
+NUTRITIONIX_EXERCISE_URL = (
+    "https://app.100daysofpython.dev/v1/nutrition/natural/exercise"
+)
+
+## @brief Longest exercise query, in characters, that the service accepts.
+MAX_QUERY_LENGTH = 50
+
+## @brief JSON field: the error object of an error answer.
+FIELD_ERROR = "error"
 
 ## @brief Name of the HTTP header that carries the Nutritionix application id.
 HEADER_APP_ID = "x-app-id"

@@ -31,7 +31,7 @@ def test_post_sends_headers_and_json_body_and_decodes_answer() -> None:
     assert exercises == [Exercise("running", 30.0, 3.0)]
     request = server.requests[0]
     assert request.method == "POST"
-    assert request.path == "/v2/natural/exercise"
+    assert request.path == "/v1/nutrition/natural/exercise"
     assert request.headers["x-app-id"] == "test-app-id"
     assert request.headers["x-app-key"] == "test-api-key"
     assert request.headers["content-type"] == "application/json"

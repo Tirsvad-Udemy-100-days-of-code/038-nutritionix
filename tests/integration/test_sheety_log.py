@@ -20,7 +20,7 @@ from tests.integration.local_server import json_payload, serve
 from tests.unit.application.fixed_clock import FixedClock
 
 CREDENTIALS = NutritionixCredentials("test-app-id", "test-api-key")
-NUTRITIONIX_PATH = "/v2/natural/exercise"
+NUTRITIONIX_PATH = "/v1/nutrition/natural/exercise"
 SHEET_PATH = "/sheet/workouts"
 ANSWER = {
     "exercises": [
@@ -85,6 +85,6 @@ class _RedirectingGateway:
         @param body The JSON body.
         @return The answer of the local server.
         """
-        if url.startswith("https://trackapi.nutritionix.com"):
+        if url.startswith("https://app.100daysofpython.dev"):
             url = self._nutritionix_url
         return self._inner.post_json(url, headers, body)

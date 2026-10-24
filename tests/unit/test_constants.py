@@ -8,7 +8,7 @@ from exercise_tracker import constants
 
 
 def test_nutritionix_url_is_the_natural_exercise_endpoint() -> None:
-    assert constants.NUTRITIONIX_EXERCISE_URL.endswith("/v2/natural/exercise")
+    assert constants.NUTRITIONIX_EXERCISE_URL.endswith("/v1/nutrition/natural/exercise")
 
 
 def test_environment_names_follow_the_assignment() -> None:

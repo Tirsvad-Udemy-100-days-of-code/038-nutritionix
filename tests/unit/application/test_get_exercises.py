@@ -10,7 +10,7 @@ from exercise_tracker.application.errors.api_error import ApiError
 from exercise_tracker.application.errors.malformed_response_error import (
     MalformedResponseError,
 )
-from exercise_tracker.constants import NUTRITIONIX_EXERCISE_URL
+from exercise_tracker.constants import MAX_QUERY_LENGTH, NUTRITIONIX_EXERCISE_URL
 from exercise_tracker.domain.errors.invalid_input_error import InvalidInputError
 from exercise_tracker.domain.value_objects.exercise import Exercise
 from exercise_tracker.domain.value_objects.exercise_query import ExerciseQuery
@@ -74,6 +74,51 @@ def test_empty_query_is_rejected_before_any_request() -> None:
     with pytest.raises(InvalidInputError):
         get_exercises(gateway, CREDENTIALS, ExerciseQuery("   "))
     assert gateway.requests == []
+
+
+def test_query_of_the_maximum_length_is_sent() -> None:
+    gateway = _ok({"exercises": []})
+    text = "a" * MAX_QUERY_LENGTH
+    get_exercises(gateway, CREDENTIALS, ExerciseQuery(text))
+    assert gateway.requests[0][2] == {"query": text}
+
+
+def test_query_over_the_maximum_length_is_rejected_before_any_request() -> None:
+    gateway = _ok({"exercises": []})
+    with pytest.raises(InvalidInputError) as caught:
+        get_exercises(gateway, CREDENTIALS, ExerciseQuery("a" * (MAX_QUERY_LENGTH + 1)))
+    assert gateway.requests == []
+    assert str(MAX_QUERY_LENGTH) in str(caught.value)
+    assert "aaa" not in str(caught.value)
+
+
+def test_nested_error_message_is_surfaced() -> None:
+    body: dict[str, object] = {
+        "error": {"code": "UNAUTHENTICATED", "message": "Invalid app credentials"}
+    }
+    gateway = FakeHttpGateway(HttpResponse(401, body))
+    with pytest.raises(ApiError) as caught:
+        get_exercises(gateway, CREDENTIALS, ExerciseQuery("x"))
+    assert caught.value.message == "Invalid app credentials"
+
+
+def test_top_level_message_wins_over_nested_message() -> None:
+    body: dict[str, object] = {"message": "top", "error": {"message": "inner"}}
+    gateway = FakeHttpGateway(HttpResponse(400, body))
+    with pytest.raises(ApiError) as caught:
+        get_exercises(gateway, CREDENTIALS, ExerciseQuery("x"))
+    assert caught.value.message == "top"
+
+
+@pytest.mark.parametrize(
+    "body",
+    [{"message": "  "}, {"error": {"message": " "}}, {"error": "text"}, {"error": {}}],
+)
+def test_blank_or_missing_message_gives_no_message(body: dict[str, object]) -> None:
+    gateway = FakeHttpGateway(HttpResponse(500, body))
+    with pytest.raises(ApiError) as caught:
+        get_exercises(gateway, CREDENTIALS, ExerciseQuery("x"))
+    assert caught.value.message == "no message"
 
 
 @pytest.mark.parametrize("status", [400, 401, 404, 500])
