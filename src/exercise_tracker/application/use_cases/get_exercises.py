@@ -5,30 +5,18 @@
 from collections.abc import Mapping
 
 from exercise_tracker import constants
-from exercise_tracker.application.dto.http_response import HttpResponse
 from exercise_tracker.application.errors.api_error import ApiError
 from exercise_tracker.application.errors.malformed_response_error import (
     MalformedResponseError,
 )
 from exercise_tracker.application.ports.http_gateway import HttpGateway
+from exercise_tracker.application.use_cases.error_message import short_message
 from exercise_tracker.domain.errors.invalid_input_error import InvalidInputError
 from exercise_tracker.domain.value_objects.exercise import Exercise
 from exercise_tracker.domain.value_objects.exercise_query import ExerciseQuery
 from exercise_tracker.domain.value_objects.nutritionix_credentials import (
     NutritionixCredentials,
 )
-
-
-def _short_message(response: HttpResponse) -> str:
-    """@brief Take the short message of an error answer.
-
-    @param response The error answer.
-    @return The message of the API, shortened; or a generic text.
-    """
-    message = response.body.get(constants.FIELD_MESSAGE)
-    if isinstance(message, str) and message.strip():
-        return message.strip()[: constants.MAX_API_MESSAGE_LENGTH]
-    return "no message"
 
 
 def _number(item: Mapping[str, object], field_name: str) -> float:
@@ -91,7 +79,7 @@ def get_exercises(
     }
     response = gateway.post_json(url, headers, {constants.FIELD_QUERY: query.text})
     if response.status_code >= constants.HTTP_ERROR_STATUS_MIN:
-        raise ApiError(response.status_code, _short_message(response))
+        raise ApiError(response.status_code, short_message(response))
     items = response.body.get(constants.FIELD_EXERCISES)
     if not isinstance(items, list):
         raise MalformedResponseError(
