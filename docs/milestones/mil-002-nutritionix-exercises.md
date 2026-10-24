@@ -12,7 +12,7 @@
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Endpoint is the 100 Days of Python service; added criteria 8 and 9 and task 7 | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Endpoint is the 100 Days of Python service; added criteria 8 and 9 and task 7 | [fdf51d6] |
 
 ---
 
@@ -79,3 +79,4 @@ A `get_exercises` function and the domain `Exercise` value object, the `HttpGate
 
 [BC-001]: ../business-case.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
+[fdf51d6]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/fdf51d6cd3c01862929c5c696d42b04800f3affb
