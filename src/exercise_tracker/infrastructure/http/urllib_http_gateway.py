@@ -18,6 +18,21 @@ from exercise_tracker.infrastructure.http.json_body import decode_json_object
 _LOGGER = logging.getLogger(__name__)
 
 
+def _with_user_agent(headers: Mapping[str, str]) -> dict[str, str]:
+    """@brief Copy the headers and add the User-Agent unless the caller set one.
+
+    The header name is compared without regard to case.
+
+    @param headers The headers of the caller.
+    @return The headers to send.
+    """
+    result = dict(headers)
+    wanted = constants.HEADER_USER_AGENT.lower()
+    if not any(name.lower() == wanted for name in result):
+        result[constants.HEADER_USER_AGENT] = constants.USER_AGENT
+    return result
+
+
 class UrllibHttpGateway:
     """@brief Sends JSON POST requests with `urllib.request`."""
 
@@ -44,7 +59,7 @@ class UrllibHttpGateway:
         request = urllib.request.Request(
             url,
             data=json.dumps(body).encode("utf-8"),
-            headers=dict(headers),
+            headers=_with_user_agent(headers),
             method=constants.HTTP_METHOD_POST,
         )
         try:

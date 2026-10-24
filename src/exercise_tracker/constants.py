@@ -19,6 +19,13 @@ HEADER_AUTHORIZATION = "Authorization"
 ## @brief Name of the HTTP header that states the media type of the body.
 HEADER_CONTENT_TYPE = "Content-Type"
 
+## @brief Name of the HTTP header that names the client program.
+HEADER_USER_AGENT = "User-Agent"
+
+## @brief Value of the User-Agent header; the default of urllib is refused by the
+#  Nutritionix firewall.
+USER_AGENT = "exercise-tracker/0.1"
+
 ## @brief Media type of every request body.
 CONTENT_TYPE_JSON = "application/json"
 

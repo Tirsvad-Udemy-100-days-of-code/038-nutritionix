@@ -11,7 +11,8 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added criterion 9 and task 7: send a User-Agent header, because the Nutritionix firewall blocks the default one | [2421865] |
 
 ---
 
@@ -35,6 +36,7 @@ An `add_workout_row` function and a `log_workout` use case, the Sheety authentic
 | 6 | A missing `SHEET_ENDPOINT` raises an error that names the variable without showing any value | Pass | Fail |
 | 7 | The integration and end-to-end tests use a local test server only | Local only | Any external host |
 | 8 | `ruff`, `mypy --strict` and `pytest` are clean with at least 90 % line coverage, and the code review against `QC-PY-001` is a Go | Clean and Go | Any finding or No-Go |
+| 9 | Every request of the gateway carries a `User-Agent` header that is not the default of `urllib` (the Nutritionix firewall answers 403 `error code: 1010` to the default) | Header present | Header missing or default |
 
 ## Dependencies
 
@@ -71,8 +73,10 @@ An `add_workout_row` function and a `log_workout` use case, the Sheety authentic
 | 4 | Extend environment configuration | Read `SHEET_ENDPOINT`, `TOKEN`, `USERNAME` and `PASSWORD` from the process environment with clear errors; the project never reads or imports `.env`. | No | |
 | 5 | Implement log_workout and the log command | Combine the two steps: query Nutritionix, then post one row per exercise. Add the composition root and the `log` command with `--dry-run` in `presentation/`, and export the functions from the package. | No | |
 | 6 | Add tests for the Sheety log | Add unit tests with a fake gateway and a fixed clock, an integration test against a local `http.server`, and an end-to-end test of the command, all offline; plus the code review record for the milestone. | No | |
+| 7 | Send a User-Agent header | Add a `USER_AGENT` constant and send it on every request of the `urllib` gateway, because the Nutritionix firewall answers HTTP 403 (`error code: 1010`) to the default `Python-urllib` agent; cover it with a unit and an integration test and record the code review. | No | |
 
 ---
 
 [BC-001]: ../business-case.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
+[2421865]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/2421865cd6604b0aae14fd3799ccd032f713d622
