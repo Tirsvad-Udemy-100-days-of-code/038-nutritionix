@@ -12,7 +12,7 @@
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added criterion 9 and task 7: send a User-Agent header, because the Nutritionix firewall blocks the default one | pending |
+| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added criterion 9 and task 7: send a User-Agent header, because the Nutritionix firewall blocks the default one | [2421865] |
 
 ---
 
@@ -79,3 +79,4 @@ An `add_workout_row` function and a `log_workout` use case, the Sheety authentic
 
 [BC-001]: ../business-case.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
+[2421865]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/2421865cd6604b0aae14fd3799ccd032f713d622
