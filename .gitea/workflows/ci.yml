@@ -2,7 +2,7 @@
 #
 # Purpose:  check the Python files, run the tests and publish the code metrics.
 # Triggers: a pull request to main, and a push to main.
-# Jobs:     quality  - the shared quality checks of TirSystem/github-action
+# Jobs:     quality  - the shared quality checks of TirSystem/git-workflows
 #                      (ruff check, ruff format --check, mypy --strict).
 #           tests    - pytest with coverage; the coverage report is uploaded.
 #           metrics  - on a push to main only: the shared code metrics workflow
@@ -29,7 +29,7 @@ jobs:
     name: Quality checks
     permissions:
       contents: read
-    uses: TirSystem/github-action/.gitea/workflows/quality-checks.yml@v2
+    uses: TirSystem/git-workflows/.gitea/workflows/quality-checks.yml@v2
     with:
       languages: python
 
@@ -66,7 +66,7 @@ jobs:
     needs: tests
     permissions:
       contents: write
-    uses: TirSystem/github-action/.gitea/workflows/code-metrics.yml@v2
+    uses: TirSystem/git-workflows/.gitea/workflows/code-metrics.yml@v2
     with:
       coverage-artifact: coverage
       coverage-report: coverage.xml
