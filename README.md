@@ -29,6 +29,9 @@ The project follows the steps of the assignment:
 | `docs/` | The plan, the reviews, the screenshots (`docs/images/`) and the wiki sources (`docs/wiki/`, in English, Danish and Bahasa Malaysia) |
 | `pyproject.toml` | Project configuration: pytest, ruff, mypy |
 | `Doxyfile` | Configuration of the Doxygen source documentation |
+| `framework/` | The SQA and QC framework, a git submodule that the project documents follow |
+| `.editorconfig` | The editor settings of the framework baseline |
+| `.env.example` | Placeholders for the git host tokens that the framework scripts read; the program never reads it or any `.env` file |
 
 No key, token or endpoint is in the source. They are read from the process environment; the project does not read a `.env` file.
 
@@ -129,7 +132,7 @@ Build the source documentation with `doxygen Doxyfile`; the result is in `doxyge
 
 ## 📄 License
 
-GNU Affero General Public License, version 3. See [LICENSE][license].
+The project is licensed under the GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later); see the [LICENSE][license] file.
 
 ## 🔗 Links
 
@@ -145,7 +148,6 @@ The documents a newcomer needs, in reading order.
 
 | Document | What it tells you |
 | --- | --- |
-| [AGENTS.md][agents] | The rules AI agents follow in this repository |
 | [Business Case][BC-001] | Why the project exists, its scope and success criteria |
 | [Stakeholder Analysis][SA-001] | Who is involved; the stakeholder IDs used for owners and reviewers |
 | [Project Plan][PP-001] | The gateways and their schedule |
@@ -153,12 +155,10 @@ The documents a newcomer needs, in reading order.
 | [Decisions][adr] | Why there is no runtime dependency and why there are no use cases |
 | [Artifact registry][registry] | Where each artifact type lives, the next version, the PO language and domain |
 | [Traceability matrix][TM-001] | How the artifacts link and when each was last reviewed |
-| [Framework README][framework-readme] | The framework this project uses |
-| [Framework changelog][framework-changelog] | What changed in each framework release |
 
 ### CI secrets
 
-The workflows in `.gitea/workflows/` call the shared workflows of `TirSystem/github-action`. The quality checks and the English comments check need no secret. The wiki publishing (`publish-wiki.yml`) needs the secret `TOKEN_FOR_GITEA_WIKI` in the organisation of the repository: a Gitea token with the scope `write:repository` for a user who can write this repository. Enable the wiki in the repository settings.
+The workflows in `.gitea/workflows/` (`ci.yml` and `english-comments.yml`) call the shared workflows of `TirSystem/git-workflows`. They need no secret of the project. The project has no workflow of its own that publishes the wiki: the pages in `docs/wiki/` are published by the shared workflows of the git host. Enable the wiki in the repository settings.
 
 ---
 
@@ -173,7 +173,6 @@ The workflows in `.gitea/workflows/` call the shared workflows of `TirSystem/git
 [sheety-docs]: https://sheety.co/docs
 [doxygen]: https://www.doxygen.nl/
 [license]: ./LICENSE
-[agents]: ./AGENTS.md
 [BC-001]: ./docs/business-case.md
 [SA-001]: ./docs/stakeholder-analysis.md
 [PP-001]: ./docs/project-plan.md
@@ -182,5 +181,3 @@ The workflows in `.gitea/workflows/` call the shared workflows of `TirSystem/git
 [ADR-0001]: ./docs/adr/adr-0001-urllib-no-runtime-dependency.md
 [registry]: ./docs/artifact-registry.md
 [TM-001]: ./docs/sqa/traceability-matrix.md
-[framework-readme]: ./framework/README.md
-[framework-changelog]: ./framework/CHANGELOG.md

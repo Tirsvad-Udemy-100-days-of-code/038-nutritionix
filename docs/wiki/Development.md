@@ -24,13 +24,12 @@ The source uses Doxygen commands (`@file`, `@brief`, `@param`, `@return`, `@thro
 
 ## Workflows
 
-The files in `.gitea/workflows/` call the shared workflows of `TirSystem/github-action`:
+The files in `.gitea/workflows/` call the shared workflows of `TirSystem/git-workflows`:
 
 | Workflow | When | What it does |
 | --- | --- | --- |
 | `ci.yml` | pull request, push to `main` | ruff and mypy (shared), pytest with coverage, code metrics badges on `main` |
 | `english-comments.yml` | pull request | fails when a new comment is not English |
-| `publish-wiki.yml` | push to `main` that changes `docs/wiki/` | publishes these pages to the wiki; needs the secret `TOKEN_FOR_GITEA_WIKI` |
 
 ## Working method
 

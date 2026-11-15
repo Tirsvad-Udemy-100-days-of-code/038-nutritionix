@@ -17,7 +17,7 @@ WORKFLOW_DIR = Path(__file__).resolve().parents[2] / ".gitea" / "workflows"
 WORKFLOWS = sorted(WORKFLOW_DIR.glob("*.yml"))
 
 EXACT_TAG = re.compile(r"@v\d+\.\d+\.\d+$")
-SHARED_MAJOR_TAG = re.compile(r"^TirSystem/github-action/.+@v\d+$")
+SHARED_MAJOR_TAG = re.compile(r"^TirSystem/git-workflows/.+@v\d+$")
 
 
 # YAML has no schema here, so the parsed values are typed Any.
