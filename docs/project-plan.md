@@ -13,7 +13,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | S01 | Initial version, accepted by S01 in chat on 2026-10-24 | [b64ad78] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Final state: milestone links and open issues of the wiki | [77d840f] |
-| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added the baseline gateway (MIL-005) with its schedule row, scope coverage, dependency, risk and Gantt entries; noted which Open Issues are superseded (the project publish-wiki workflow was removed when the shared workflows of the git host took over); set the domain to education; reviewed in autonomous mode, not independent | pending |
+| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added the baseline gateway (MIL-005) with its schedule row, scope coverage, dependency, risk and Gantt entries; noted which Open Issues are superseded (the project publish-wiki workflow was removed when the shared workflows of the git host took over); set the domain to education; reviewed in autonomous mode, not independent | [4a1d48d] |
 
 ---
 
@@ -114,3 +114,4 @@ A No-Go on a gateway moves every later date by the time of the rework; the end d
 [77d840f]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/77d840f9d01a643508bb5251803ff0b7750c392f
 [MIL-005]: ./milestones/mil-005-framework-baseline.md
 [MIL-005 milestone]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/milestone/553
+[4a1d48d]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/4a1d48d9c70bcea3a52ac99e463f4c9fed60c260

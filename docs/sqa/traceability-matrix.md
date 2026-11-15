@@ -18,7 +18,7 @@
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-013 for MIL-003 | [05ca87b] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-012 for MIL-002 | [a8889c5] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-009 to RC-011 for MIL-001 | [0c1627b] |
-| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added MIL-005, the review records RC-020 to RC-023 and the wiki; set the reviewed rows of BC-001 and PP-001 and the domain of the changed rows to education; corrected the CrossReference row and the stale coverage note (autonomous, not independent) | pending |
+| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added MIL-005, the review records RC-020 to RC-023 and the wiki; set the reviewed rows of BC-001 and PP-001 and the domain of the changed rows to education; corrected the CrossReference row and the stale coverage note (autonomous, not independent) | [4a1d48d] |
 
 ---
 
@@ -98,3 +98,4 @@ updated whenever an artifact instance is created or reviewed.
 [RC-021]: ./reviews/rc-021-project-plan-baseline.md
 [RC-022]: ./reviews/rc-022-milestone-005.md
 [RC-023]: ./reviews/rc-023-wiki.md
+[4a1d48d]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/4a1d48d9c70bcea3a52ac99e463f4c9fed60c260

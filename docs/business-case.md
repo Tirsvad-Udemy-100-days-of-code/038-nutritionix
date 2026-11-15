@@ -13,7 +13,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Scope names the 100 Days of Python endpoint of the course instead of the Nutritionix host, and the 50-character query limit | [fdf51d6] |
-| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added objective 9, success criterion 9, a scope item, an out-of-scope item, a risk and constraints for the baseline milestone MIL-005; set the domain to education; reviewed in autonomous mode, not independent | pending |
+| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added objective 9, success criterion 9, a scope item, an out-of-scope item, a risk and constraints for the baseline milestone MIL-005; set the domain to education; reviewed in autonomous mode, not independent | [4a1d48d] |
 
 ---
 
@@ -158,3 +158,4 @@ Proceed — the scope is small, the risks are mitigated and the result is useful
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
 [fdf51d6]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/fdf51d6cd3c01862929c5c696d42b04800f3affb
 [MIL-005]: ./milestones/mil-005-framework-baseline.md
+[4a1d48d]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/4a1d48d9c70bcea3a52ac99e463f4c9fed60c260
