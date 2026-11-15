@@ -4,15 +4,16 @@
 | Key | Value |
 | --- | --- |
 | ID | BC-001 |
-| CrossReference | [SA-001] |
+| CrossReference | [SA-001], [MIL-005] |
 | Language | en |
-| Domain | it |
+| Domain | education |
 
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Scope names the 100 Days of Python endpoint of the course instead of the Nutritionix host, and the 50-character query limit | [fdf51d6] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Scope names the 100 Days of Python endpoint of the course instead of the Nutritionix host, and the 50-character query limit | [fdf51d6] |
+| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added objective 9, success criterion 9, a scope item, an out-of-scope item, a risk and constraints for the baseline milestone MIL-005; set the domain to education; reviewed in autonomous mode, not independent | pending |
 
 ---
 
@@ -42,6 +43,7 @@ A tidy repository turns the lecture code into a reference that others can run in
 6. Document the source with Doxygen comments and provide a `Doxyfile`.
 7. Publish a README and a wiki in English, Danish and Bahasa Malaysia with screenshots.
 8. Describe the repository on the git host with a description and topics, and run the shared quality workflows of `TirSystem/github-action`.
+9. Bring the finished project to the common baseline of the framework: the adopted framework release, the wiki sidebar in the framework's shape, complete licence metadata, a README and wiki that describe the workflows as they are now, a passing test suite after the move to the shared workflows, and review records for every changed document ([MIL-005]).
 
 ## Scope
 
@@ -54,6 +56,7 @@ A tidy repository turns the lecture code into a reference that others can run in
 - A `constants.py` for constants, Doxygen comments in the source and a `Doxyfile`.
 - The README from the framework template, a wiki in English, Danish and Bahasa Malaysia, and screenshots for both.
 - The shared workflows from `TirSystem/github-action` that suit a Python project, the repository description and topics, one pull request per milestone.
+- The baseline milestone [MIL-005]: the framework release, the wiki sidebar in the framework's shape, the README without the private framework files in its appendix and without the removed wiki workflow, licence and project URL metadata, `.editorconfig`, `.env.example`, review records, a current traceability matrix, the repair of the tests that name the shared workflow repository and the sidebar, and the upload step of the coverage report. It changes no behaviour of the program.
 
 ### Out of Scope
 
@@ -62,6 +65,7 @@ A tidy repository turns the lecture code into a reference that others can run in
 - Reading a `.env` file in the project: the file is personal to the author and is not imported, tested or committed.
 - Graphical user interface, a database, packaging for PyPI and any other fitness or sheet service.
 - Tests against the live Nutritionix or Sheety services.
+- Any change to `src/` in the baseline milestone [MIL-005], and any change to `tests/` except the patterns of the two tests named in tasks 6 and 7 of [MIL-005].
 
 ## Expected Benefits
 
@@ -93,6 +97,7 @@ The project supports the author's goal of finishing the 100 Days of Code course 
 | 6 | Wiki is complete | 3 languages, the same page set | File list of `docs/wiki/` |
 | 7 | Lint and types are clean | 0 `ruff` findings, 0 `mypy --strict` errors | The quality workflow or the local commands |
 | 8 | Repository is described | Description and at least 5 topics set | Gitea repository settings |
+| 9 | The baseline milestone is done (objective 9) | The wiki sidebar has the framework's shape, `framework/scripts/check-readme.sh`, `framework/scripts/check-languages.sh` and `framework/scripts/check-editorconfig.sh` exit with code 0, 100 % of the continuous integration (CI) checks of the pull request of [MIL-005] pass | Files in `docs/wiki/`, the script exit codes and the pull request status on the git host |
 
 ## Risks
 
@@ -104,6 +109,7 @@ The project supports the author's goal of finishing the 100 Days of Code course 
 | Translations drift from English | Readers in Danish or Bahasa Malaysia get old text | Same page set in each language, English is authoritative, wiki pages are reviewed with the change |
 | The shared workflows need secrets and a runner that the repository may not have | Continuous integration (CI) stays red or does not run | The workflows are installed from the shared repository and the needed secrets are listed in the README |
 | The standard library HTTP client is less readable than `requests` for a beginner | S02 finds the code harder to compare with the lecture | The HTTP code is confined to one small adapter and ADR-0001 (Architecture Decision Record) records the decision |
+| The documents of the baseline milestone [MIL-005] change documents that were accepted earlier, and the AI stand-in for S01 reviews them | Medium: a defect is missed because the review is not independent | Every review record of the baseline says `Mode: autonomous, not independent`, the program is not changed, the tests run before and after, and the end-of-run summary lists the reviews for challenge |
 
 ## Assumptions
 
@@ -119,6 +125,8 @@ The project supports the author's goal of finishing the 100 Days of Code course 
 - `constants.py` holds the constants; Doxygen comments in the source; a `Doxyfile`.
 - No runtime dependency: the standard library is enough (ADR-0001).
 - One branch and one pull request per milestone, so the steps stay traceable.
+- The baseline milestone [MIL-005] starts 2026-11-16 and is finished within one week, by 2026-11-23. For that milestone only, an AI stand-in for S01 reviews and accepts the changed documents.
+- The Product Owner (PO) language is English and the PO domain is education (it was IT until [MIL-005]; the documents that [MIL-005] does not change keep the domain `it`, see the Open Issues of [PP-001]).
 - Keys and tokens come from the personal `.env`, which is not imported, not tested and not committed.
 
 ## Cost–Benefit Assessment
@@ -146,5 +154,7 @@ Proceed — the scope is small, the risks are mitigated and the result is useful
 ---
 
 [SA-001]: ./stakeholder-analysis.md
+[PP-001]: ./project-plan.md
 [b64ad78]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/b64ad78da4e7a2bd6357aebc7435f940aabd3474
 [fdf51d6]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/fdf51d6cd3c01862929c5c696d42b04800f3affb
+[MIL-005]: ./milestones/mil-005-framework-baseline.md

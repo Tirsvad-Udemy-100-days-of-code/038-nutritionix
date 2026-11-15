@@ -24,13 +24,12 @@ Kilden bruger Doxygen-kommandoer (`@file`, `@brief`, `@param`, `@return`, `@thro
 
 ## Workflows
 
-Filerne i `.gitea/workflows/` kalder de fælles workflows fra `TirSystem/github-action`:
+Filerne i `.gitea/workflows/` kalder de fælles workflows fra `TirSystem/git-workflows`:
 
 | Workflow | Hvornår | Hvad det gør |
 | --- | --- | --- |
 | `ci.yml` | pull request, push til `main` | ruff og mypy (fælles), pytest med dækning, kodemetrik-badges på `main` |
 | `english-comments.yml` | pull request | fejler, når en ny kommentar ikke er på engelsk |
-| `publish-wiki.yml` | push til `main`, der ændrer `docs/wiki/` | udgiver disse sider til wikien; kræver hemmeligheden `TOKEN_FOR_GITEA_WIKI` |
 
 ## Arbejdsmetode
 
