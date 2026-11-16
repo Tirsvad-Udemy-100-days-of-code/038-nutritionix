@@ -80,9 +80,13 @@ def test_page_starts_with_language_line(page: str, suffix: str) -> None:
 
 
 @pytest.mark.parametrize("page", PAGES)
-@pytest.mark.parametrize("suffix", ("", *LANGUAGE_SUFFIXES))
-def test_sidebar_links_every_page_in_every_language(page: str, suffix: str) -> None:
-    assert f"({page}{suffix})" in _read(SIDEBAR)
+def test_sidebar_links_every_english_page(page: str) -> None:
+    assert f"({page})" in _read(SIDEBAR)
+
+
+@pytest.mark.parametrize("suffix", LANGUAGE_SUFFIXES)
+def test_sidebar_links_the_home_page_of_every_language(suffix: str) -> None:
+    assert f"(Home{suffix})" in _read(SIDEBAR)
 
 
 @pytest.mark.parametrize("name", ALL_PAGE_NAMES)

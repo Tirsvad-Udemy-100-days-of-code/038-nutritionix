@@ -24,13 +24,12 @@ Kod sumber menggunakan arahan Doxygen (`@file`, `@brief`, `@param`, `@return`, `
 
 ## Workflow
 
-Fail dalam `.gitea/workflows/` memanggil workflow kongsi daripada `TirSystem/github-action`:
+Fail dalam `.gitea/workflows/` memanggil workflow kongsi daripada `TirSystem/git-workflows`:
 
 | Workflow | Bila | Fungsinya |
 | --- | --- | --- |
 | `ci.yml` | pull request, push ke `main` | ruff dan mypy (kongsi), pytest dengan liputan, lencana metrik kod pada `main` |
 | `english-comments.yml` | pull request | gagal apabila komen baharu bukan dalam bahasa Inggeris |
-| `publish-wiki.yml` | push ke `main` yang mengubah `docs/wiki/` | menerbitkan halaman ini ke wiki; memerlukan rahsia `TOKEN_FOR_GITEA_WIKI` |
 
 ## Kaedah kerja
 

@@ -3,7 +3,7 @@
 # pytest, ruff, mypy and coverage. Decision: ADR-0001 (no runtime dependency).
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,7 +12,8 @@ version = "0.1.0"
 description = "Log workouts from plain English: Nutritionix finds the calories, Sheety writes the row."
 readme = "README.md"
 requires-python = ">=3.13"
-license = { text = "AGPL-3.0-or-later" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [{ name = "Jens Tirsvad Nielsen" }]
 keywords = ["nutritionix", "sheety", "exercise-tracker", "100-days-of-code"]
 classifiers = [
@@ -20,6 +21,11 @@ classifiers = [
     "Environment :: Console",
 ]
 dependencies = []
+
+[project.urls]
+Repository = "https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix"
+Documentation = "https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/wiki"
+"Issue tracker" = "https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/issues"
 
 [project.optional-dependencies]
 # Every development tool is pinned; ruff and mypy match the shared quality workflow.

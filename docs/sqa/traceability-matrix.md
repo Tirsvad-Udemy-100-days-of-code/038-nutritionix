@@ -4,13 +4,13 @@
 | Key | Value |
 | --- | --- |
 | ID | TM-001 |
-| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008] |, [RC-009], [RC-010], [RC-011], [RC-012], [RC-013], [RC-014], [RC-015], [RC-016], [RC-017], [RC-018], [RC-019]
+| CrossReference | [BC-001], [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [MIL-005], [ADR-0001], [ADR-0002], [RC-001], [RC-002], [RC-003], [RC-004], [RC-005], [RC-006], [RC-007], [RC-008], [RC-009], [RC-010], [RC-011], [RC-012], [RC-013], [RC-014], [RC-015], [RC-016], [RC-017], [RC-018], [RC-019], [RC-020], [RC-021], [RC-022], [RC-023] |
 
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version with the plan documents and RC-001 to RC-008 | [b64ad78] |
-| 2026-10-24 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-019 for MIL-002 task 7 | [46f5db5] |
+| 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-019 for MIL-002 task 7 | [46f5db5] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-017 and RC-018 for the endpoint change | [fdf51d6] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-016 for MIL-003 task 7 | [bf42eed] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-015 for the re-review of MIL-003 | [2421865] |
@@ -18,6 +18,7 @@
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-013 for MIL-003 | [05ca87b] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-012 for MIL-002 | [a8889c5] |
 | 2026-10-24 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added RC-009 to RC-011 for MIL-001 | [0c1627b] |
+| 2026-11-16 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Added MIL-005, the review records RC-020 to RC-023 and the wiki; set the reviewed rows of BC-001 and PP-001 and the domain of the changed rows to education; corrected the CrossReference row and the stale coverage note (autonomous, not independent) | [4a1d48d] |
 
 ---
 
@@ -31,20 +32,26 @@ updated whenever an artifact instance is created or reviewed.
 
 | Artifact Instance | Type | Language | Domain | Upstream (Backward Link) | Downstream (Forward Link) | Last Reviewed (RC-ID) |
 | --- | --- | --- | --- | --- | --- | --- |
-| [BC-001] | BC | en | it | - | [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004] | [RC-001], [RC-017] |
+| [BC-001] | BC | en | education | - | [SA-001], [PP-001], [MIL-001], [MIL-002], [MIL-003], [MIL-004], [MIL-005] | [RC-020], [RC-001], [RC-017] |
 | [SA-001] | SA | en | it | [BC-001] | [PP-001] | [RC-002] |
-| [PP-001] | PP | en | it | [BC-001], [SA-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004] | - |
+| [PP-001] | PP | en | education | [BC-001], [SA-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004], [MIL-005] | [RC-021] |
 | [MIL-001] | MIL | en | it | [BC-001], [PP-001] | [MIL-002] | [RC-003], [RC-009], [RC-010], [RC-011] |
 | [MIL-002] | MIL | en | it | [BC-001], [PP-001], [MIL-001] | [MIL-003] | [RC-004], [RC-012], [RC-018], [RC-019] |
 | [MIL-003] | MIL | en | it | [BC-001], [PP-001], [MIL-002] | [MIL-004] | [RC-005], [RC-013], [RC-015], [RC-016] |
-| [MIL-004] | MIL | en | it | [BC-001], [PP-001], [MIL-003] | - | [RC-006], [RC-014] |
+| [MIL-004] | MIL | en | it | [BC-001], [PP-001], [MIL-003] | [MIL-005] | [RC-006], [RC-014] |
+| [MIL-005] | MIL | en | education | [BC-001], [PP-001], [MIL-004] | - | [RC-022] |
 | [ADR-0001] | ADR | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-002] | [RC-007] |
 | [ADR-0002] | ADR | - | - | [BC-001] | [MIL-002], [MIL-003] | [RC-008] |
+| Wiki | Wiki | en, da, ms | education | [BC-001], [MIL-005] | - | [RC-023] |
 
 ## Coverage Notes
 
 - `-` in Upstream means the instance is foundational, in Downstream that nothing is built on it yet, and in Last Reviewed that no `RC-*` exists yet.
-- The Project Plan has no QC checklist; S01 accepted it in chat on 2026-10-24, so it has no review record.
+- [PP-001] was accepted without a QC checklist; it is reviewed against `QC-PP-001` for the first time in [RC-021].
+- The wiki (`docs/wiki/`) is documentation, not an artifact with an ID or a Language and Domain row; it has its own review record, [RC-023].
+- The project workflow `.gitea/workflows/publish-wiki.yml` that MIL-001 installed was removed in the commit "Use git-workflows and the scoped workflows", when the repository moved to the shared workflows of the git host; RC-010 and RC-011 reviewed it while it existed. `ci.yml` and `english-comments.yml` are still reviewed there.
+- The domain of [BC-001], [PP-001], [MIL-005] and the wiki is `education` since [MIL-005]. The other documents keep the domain `it` they were accepted with; a change of their domain would need a new review of each (see the Open Issues of [PP-001]).
+- [MIL-005] changes no source file, so the source code is not reviewed again. Its only changes under `tests/` are the pattern of the shared workflow repository in `tests/unit/test_workflows.py` and the sidebar test in `tests/unit/test_wiki.py` (task 6), and its only change to a workflow is the version of the `upload-artifact` step of `ci.yml` (task 7); the test suite and the checks of the pull request verify them, and no new code review record is written for them.
 - The types KPI, BMC, BPMN, UCD, US, UC, DM, SSD, OC, SD, DCD, ERD and DICT have no instance (ADR-0002).
 
 ---
@@ -86,3 +93,9 @@ updated whenever an artifact instance is created or reviewed.
 [bf42eed]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/bf42eedca536619bdc54dca57f5c159d45c2113b
 [fdf51d6]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/fdf51d6cd3c01862929c5c696d42b04800f3affb
 [46f5db5]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/46f5db526e5df41e0931755e53d4c5b37072153b
+[MIL-005]: ../milestones/mil-005-framework-baseline.md
+[RC-020]: ./reviews/rc-020-business-case-baseline.md
+[RC-021]: ./reviews/rc-021-project-plan-baseline.md
+[RC-022]: ./reviews/rc-022-milestone-005.md
+[RC-023]: ./reviews/rc-023-wiki.md
+[4a1d48d]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/038-nutritionix/commit/4a1d48d9c70bcea3a52ac99e463f4c9fed60c260
